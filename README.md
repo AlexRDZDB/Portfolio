@@ -15,17 +15,20 @@ Portfolio/
 ├── index.html            Home page (hero, featured projects, about, contact)
 ├── projects.html         Grid of every project
 ├── project.html          ONE template used for every project page
+├── publications.html     List of papers, theses, posters
 ├── css/
 │   └── styles.css        All styling. Colors/fonts are variables at the top.
 ├── js/
 │   ├── data/
 │   │   ├── site.js       ← Your name, links, ribbon-bar items, about text, skills
-│   │   └── projects.js   ← Your projects (this is the file you'll edit most)
+│   │   ├── projects.js   ← Your projects (this is the file you'll edit most)
+│   │   └── publications.js ← Your papers
 │   ├── components.js     Reusable pieces: Navbar, ProjectCard, content blocks...
 │   └── pages/
 │       ├── home.js           Fills in index.html
 │       ├── project-list.js   Fills in projects.html
-│       └── project-page.js   Fills in project.html
+│       ├── project-page.js   Fills in project.html
+│       └── publications.js   Fills in publications.html
 └── assets/
     ├── images/projects/  Project photos (e.g. images/projects/rover/cover.jpg)
     └── docs/             resume.pdf goes here
@@ -50,12 +53,29 @@ Your project now appears on the Projects page and has its own page at
 
 The order of the list is the order projects are shown in.
 
+### Add a publication
+Open `js/data/publications.js`, copy a `{ ... },` block and change the text. Each entry has a title, authors, venue, year, type (Conference, Journal, Thesis...), an optional status like "Under review", an optional abstract (shown in a "Show abstract" drop-down), and link buttons (PDF, DOI, arXiv, code...).
+
+Your name is shown in bold in author lists. List every spelling you've published under in `MY_AUTHOR_NAMES` at the top of the file. PDFs can go in `assets/docs/`.
+
+### Writing long text
+Put long text between backticks (`` ` ``) instead of quotes. Then you can press Enter as often as you like:
+```js
+body: `
+  First paragraph. This line break is ignored,
+  so the paragraph keeps going here.
+
+  A blank line starts a second paragraph.
+`,
+```
+This works for any text field (`summary`, `caption`, list items...). The only thing you can't type inside is a backtick itself.
+
 ### Build a project page from blocks
 A project's `sections` is a list of blocks, shown top to bottom:
 
 | type      | what it shows      | fields                                   |
 |-----------|--------------------|------------------------------------------|
-| `text`    | Heading + paragraphs | `heading`, `body` (use `\n\n` between paragraphs) |
+| `text`    | Heading + paragraphs | `heading`, `body` (blank line between paragraphs) |
 | `list`    | Bullet list        | `heading`, `items: [...]`                |
 | `image`   | One image          | `src`, `caption`                         |
 | `gallery` | Grid of images     | `heading`, `images: [{ src, caption }]`  |
@@ -72,22 +92,22 @@ Save it as `assets/docs/resume.pdf`, or change the `resume` path in `site.js` an
 ## Adding your own component
 
 A component is a function that takes some data and returns HTML as text.
-Example: a "Publications" section.
+Example: an "Awards" section on the home page.
 
 **1. Add the data** to `js/data/site.js`, inside `SITE`:
 ```js
-publications: [
-  { title: "My paper", venue: "ICRA 2026", url: "https://..." },
+awards: [
+  { title: "Best Paper Award", from: "Purdue Robotics Symposium", year: "2025" },
 ],
 ```
 
 **2. Write the component** in `js/components.js`:
 ```js
-function Publication(pub) {
+function Award(award) {
   return `
     <li>
-      <a href="${pub.url}" target="_blank">${esc(pub.title)}</a>
-      <span class="muted"> — ${esc(pub.venue)}</span>
+      <strong>${esc(award.title)}</strong>
+      <span class="muted"> — ${esc(award.from)}, ${esc(award.year)}</span>
     </li>`;
 }
 ```
@@ -96,21 +116,21 @@ Wrap text in `esc(...)` so characters like `<` show up correctly.
 
 **3. Add an empty container** where it should appear in `index.html`:
 ```html
-<section id="publications" class="section container">
-  <h2>Publications</h2>
-  <ul id="publication-list"></ul>
+<section id="awards" class="section container">
+  <h2>Awards</h2>
+  <ul id="award-list"></ul>
 </section>
 ```
 
 **4. Fill the container** in `js/pages/home.js`:
 ```js
-render("publication-list", SITE.publications.map(Publication).join(""));
+render("award-list", SITE.awards.map(Award).join(""));
 ```
-`.map(Publication)` runs the component once per item, and `.join("")` glues the results together.
+`.map(Award)` runs the component once per item, and `.join("")` glues the results together.
 
 **5. (Optional) Style it** in `css/styles.css`, using the `id` or a class you added.
 
-To add it to the ribbon bar, add `{ label: "Publications", page: "index.html#publications" }` to `nav` in `site.js`.
+To add it to the ribbon bar, add `{ label: "Awards", page: "index.html#awards" }` to `nav` in `site.js`.
 
 ### Adding a new project block type
 Add an entry to the `BLOCKS` object in `js/components.js`. The name you give it becomes the `type`:

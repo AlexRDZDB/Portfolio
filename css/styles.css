@@ -135,7 +135,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* On small screens the links collapse into a drop-down menu */
-@media (max-width: 720px) {
+@media (max-width: 880px) {
   .nav-toggle { display: block; }
   .nav-links {
     display: none;
@@ -290,6 +290,52 @@ figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--muted); text-ali
   margin-top: 64px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
+}
+
+/* =====================================================================
+   PUBLICATIONS PAGE
+   ===================================================================== */
+.publication {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+}
+.pub-meta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.pub-year { font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); }
+.pub-type {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+}
+.pub-body h3 { margin-bottom: 0.4em; }
+.pub-authors { color: var(--text-soft); margin-bottom: 0.2em; font-size: 0.95rem; }
+.pub-authors strong { color: var(--text); }
+.pub-venue { color: var(--muted); font-style: italic; font-size: 0.95rem; margin-bottom: 0.8em; }
+.pub-status {
+  font-style: normal;
+  font-size: 0.8rem;
+  padding: 1px 8px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--accent);
+}
+.pub-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.btn-small { padding: 5px 14px; font-size: 0.85rem; }
+
+.abstract summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
+.abstract p { color: var(--text-soft); font-size: 0.95rem; margin-top: 0.8em; }
+
+@media (max-width: 600px) {
+  .publication { grid-template-columns: 1fr; gap: 8px; }
+  .pub-meta { flex-direction: row; align-items: center; }
 }
 
 /* =====================================================================

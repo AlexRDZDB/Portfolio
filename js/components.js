@@ -29,10 +29,12 @@ function esc(text) {
     .replace(/"/g, "&quot;");
 }
 
-// Turn "Para 1\n\nPara 2" into two <p> tags.
+// Turn text with blank lines between paragraphs into separate <p> tags.
 function paragraphs(text) {
   return String(text ?? "")
     .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean)
     .map((p) => `<p>${esc(p)}</p>`)
     .join("");
 }
@@ -134,6 +136,45 @@ function ProjectCard(project) {
 function ProjectGrid(projects) {
   if (!projects.length) return `<p class="muted">No projects yet.</p>`;
   return `<div class="grid">${projects.map(ProjectCard).join("")}</div>`;
+}
+
+/* ---------- Publication components ---------- */
+
+// Author list with your name (from MY_AUTHOR_NAMES) in bold.
+function Authors(authors) {
+  let html = esc(authors);
+  (typeof MY_AUTHOR_NAMES !== "undefined" ? MY_AUTHOR_NAMES : []).forEach((name) => {
+    html = html.split(esc(name)).join(`<strong>${esc(name)}</strong>`);
+  });
+  return html;
+}
+
+// One entry on the Publications page.
+function Publication(pub) {
+  const abstract = pub.abstract && pub.abstract.trim()
+    ? `<details class="abstract"><summary>Show abstract</summary>${paragraphs(pub.abstract)}</details>`
+    : "";
+  const links = (pub.links || []).map((l) => Button(l.label, l.url, "secondary btn-small")).join("");
+
+  return `
+    <article class="publication">
+      <div class="pub-meta">
+        <span class="pub-year">${esc(pub.year)}</span>
+        ${pub.type ? `<span class="pub-type">${esc(pub.type)}</span>` : ""}
+      </div>
+      <div class="pub-body">
+        <h3>${esc(pub.title)}</h3>
+        <p class="pub-authors">${Authors(pub.authors)}</p>
+        <p class="pub-venue">${esc(pub.venue)}${pub.status ? ` <span class="pub-status">${esc(pub.status)}</span>` : ""}</p>
+        ${abstract}
+        ${links ? `<div class="pub-links">${links}</div>` : ""}
+      </div>
+    </article>`;
+}
+
+function PublicationList(publications) {
+  if (!publications.length) return `<p class="muted">No publications yet.</p>`;
+  return publications.map(Publication).join("");
 }
 
 function SkillGroup(skill) {
