@@ -1,0 +1,302 @@
+/* =====================================================================
+   THEME  —  change these values to restyle the whole site.
+   ===================================================================== */
+:root {
+  /* Seahawks palette: College Navy, Action Green, Wolf Grey */
+  --bg:        #002244;   /* page background (College Navy) */
+  --surface:   #0a2d55;   /* cards, ribbon bar */
+  --surface-2: #133a66;   /* hover states, code blocks */
+  --border:    #22497a;
+  --text:      #ffffff;   /* headings and main text */
+  --text-soft: #d9dee3;   /* body paragraphs on project pages */
+  --muted:     #a5acaf;   /* secondary text (Wolf Grey) */
+  --accent:    #69be28;   /* highlight color: buttons, active link, labels (Action Green) */
+  --accent-ink:#002244;   /* text that sits on top of the accent color */
+
+  --font:      "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  --max-width: 1120px;    /* widest the content gets */
+  --radius:    10px;      /* corner roundness */
+  --nav-height: 64px;
+}
+
+/* =====================================================================
+   BASE
+   ===================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 16px); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main { flex: 1; }
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 0.5em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 700; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p  { margin: 0 0 1em; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.narrow { max-width: 820px; }
+
+.muted { color: var(--muted); }
+.lead  { font-size: 1.2rem; color: var(--muted); max-width: 60ch; }
+
+/* Small uppercase label above headings */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.5em;
+}
+
+/* =====================================================================
+   RIBBON BAR (top navigation)
+   ===================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand { display: flex; flex-direction: column; line-height: 1.2; color: var(--text); }
+.brand:hover { text-decoration: none; }
+.brand-name  { font-weight: 700; font-size: 1.05rem; }
+.brand-title { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.nav-links a:hover  { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.nav-links a.active { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); border-radius: 0; }
+
+/* Hamburger button: hidden on wide screens */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px 0;
+  background: var(--text);
+}
+
+/* On small screens the links collapse into a drop-down menu */
+@media (max-width: 720px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 8px 16px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* =====================================================================
+   SECTIONS & HERO
+   ===================================================================== */
+.hero { padding: 96px 24px 64px; }
+.hero h1 { max-width: 18ch; }
+
+.section { padding: 56px 24px; }
+.section + .section { border-top: 1px solid var(--border); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+/* =====================================================================
+   BUTTONS & TAGS
+   ===================================================================== */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s, background 0.15s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+.btn-primary   { background: var(--accent); color: var(--accent-ink); }
+.btn-secondary { border-color: var(--border); color: var(--text); }
+.btn-secondary:hover { background: var(--surface-2); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 12px 0 0; }
+.tags li {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* =====================================================================
+   PROJECT CARDS & GRID
+   ===================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--text);
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); text-decoration: none; }
+.card .media { border-radius: 0; }
+.card-body { padding: 20px; }
+.card-body p:not(.eyebrow) { color: var(--muted); font-size: 0.95rem; }
+
+/* Images and the "Add image" placeholder share the same shape */
+.media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.placeholder {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(45deg, var(--surface-2) 0 12px, var(--surface) 12px 24px);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* =====================================================================
+   ABOUT & SKILLS
+   ===================================================================== */
+.about { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; }
+.about #about-text { color: var(--muted); }
+.skills { display: grid; gap: 20px; }
+.skill-group h3 { font-size: 0.95rem; margin-bottom: 0; }
+
+@media (max-width: 800px) {
+  .about { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* =====================================================================
+   PROJECT PAGE
+   ===================================================================== */
+.back-link { display: inline-block; margin-bottom: 32px; color: var(--muted); font-size: 0.9rem; }
+.project-header { margin-bottom: 40px; }
+
+.block { margin: 48px 0; }
+.block p, .bullets { color: var(--text-soft); }
+.bullets { padding-left: 1.2em; }
+.bullets li { margin-bottom: 0.4em; }
+
+figure { margin: 0; }
+figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 16px; }
+
+.video { position: relative; aspect-ratio: 16 / 9; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius); }
+
+.specs { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.specs th, .specs td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.specs th { width: 30%; color: var(--muted); font-weight: 500; }
+
+.code {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.site-footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted); font-size: 0.9rem; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--muted); }
+.footer-links a:hover { color: var(--text); }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Robotics Engineer</title>
+  <meta name="description" content="Robotics engineering portfolio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Ribbon bar: filled in by Navbar() in js/components.js -->
+  <header id="navbar" class="site-header"></header>
+
+  <main>
+    <!-- Hero: filled in by js/pages/home.js -->
+    <section id="hero" class="hero container"></section>
+
+    <section class="section container">
+      <div class="section-head">
+        <h2>Featured projects</h2>
+        <a href="projects.html">See all →</a>
+      </div>
+      <div id="featured-projects"></div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About</h2>
+      <div class="about">
+        <div id="about-text"></div>
+        <div id="skills" class="skills"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section container">
+      <h2>Contact</h2>
+      <p class="muted">Open to robotics, controls, and autonomy roles. The fastest way to reach me is email.</p>
+      <div id="contact-links" class="actions"></div>
+    </section>
+  </main>
+
+  <footer id="footer" class="site-footer"></footer>
+
+  <!-- Order matters: data first, then components, then the page script. -->
+  <script src="js/data/site.js"></script>
+  <script src="js/data/projects.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/pages/home.js"></script>
+</body>
+</html>
