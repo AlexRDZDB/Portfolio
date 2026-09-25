@@ -104,10 +104,10 @@ const PROJECTS = [
     id: "uav-6to",
     title: "UAV Vision-Based Target Tracking Demo",
     summary:
-      "Implemented vision-based target tracking demonstration with a UAV drone.",
+      "ROS 2 package that autonomously holds a DJI Tello centered above a moving ArUco target using downward-camera vision and proportional control.",
     date: "Spring 2025",
     role: "Solo project",
-    tags: ["UAV", "Python", "Control Systems", "Computer Vision"],
+  tags: ["UAV", "ROS2", "OpenCV", "ArUco", "Control Systems", "Computer Vision"],
     image: "",
     featured: false,
     links: [{ label: "GitHub", url: "https://github.com/AlexRDZDB/DJITello_Surveillance.git" },
@@ -120,8 +120,8 @@ const PROJECTS = [
         heading: "Overview",
         body: `
           Unmanned Aerial Vehicles (UAVs) have a wide range of useful applications. Inspired by avoiding poaching
-          of endangered species that happen in the African Savannah, I developed a ROS2 package that can commandeer
-          a DJI Tello drone and use Computer Vision to hover over an object, using Proportional controllers to mantain
+          of endangered species that happen in the African Savannah, I developed a ROS2 package that can command
+          a DJI Tello drone and use Computer Vision to hover over an object, using Proportional controllers to maintain
           the object in the center of a camera frame, as well as to respect a vertical distance from the object. 
         `,
       },
@@ -132,30 +132,24 @@ const PROJECTS = [
           The target is detected via ArUco markers on a flat, movable surface. This was chosen as a first approach
           due to hardware limitations of the DJI Tello drone, where the bottom camera feed could only transmit video in
           a grayscale format. Additionally, this provides a robust output that can be used for the control logic before
-          finetuning for further operations.
+          fine-tuning for further operations.
 
           For frame processing, the DJI Tello drone sends raw frame data to an operating laptop via a WiFi signal. This was
-          done as a hardware limitation, as the DJI Tello drone used did not have capabilites for onboard processing. I utilized the
+          done as a hardware limitation, as the DJI Tello drone used did not have capabilities for onboard processing. I utilized the
           ArUco marker library to identify the ArUco and draw detected borders in pixel coordinates. The centroid is computed by 
-          obtaining the edges and averaging their X and Y coordinates, adjusting for the position of the center of the image using it's
+          obtaining the edges and averaging their X and Y coordinates, adjusting for the position of the center of the image using its
           frame size. The drone's height above the target is estimated monocularly with the pinhole camera model: since the ArUco marker's 
           physical side length is known, the distance is computed from its apparent side length in pixels and an empirically 
           calibrated focal length.
 
-          Once calculated, the controller node recieves the offset values via ROS2 topics, and uses them to compute the necessary velocity commands to send to the drone. 
+          Once calculated, the controller node receives the offset values via ROS2 topics, and uses them to compute the necessary velocity commands to send to the drone. 
           The controller uses a simple Proportional control law to adjust the drone's position in real-time, ensuring that the target remains centered in the camera frame 
           and at a desired height.
-
-          The system is designed to be robust to moderate changes in the target's position and orientation, allowing for smooth tracking of the target as it moves within the drone's field of view.
-          The communication over WiFi faces some limitations, as the recieving and sending commands to the drone incurs significant latency. The testing scenarion also faced uniform lighting,
-          testing in different lighting conditions was not done and would be a good next step to improve the robustness of the system. Currently, the system is limited to tracking a single target at a time,
-          if sight is lost, the drone will hover in place until the target is reacquired. Future improvements could include implementing a search pattern to reacquire lost targets, as well as integrating 
-          more advanced computer vision techniques for multi-target tracking and occlusion handling.
         `,
       },
       {
         type: "code",
-        heading: "PID Control Logic",
+        heading: "Proportional Control Logic",
         language: "python",
         code: `def control_drone(self):
         # Controller Parameters
@@ -185,6 +179,17 @@ const PROJECTS = [
             up = -30
         
         self.drone.send_rc_control(right, forward, up, yaw)`,
+      },
+      {
+        type: "text",
+        heading: "Limitations and Future Work",
+        body: `
+          The system is designed to be robust to moderate changes in the target's position and orientation, allowing for smooth tracking of the target as it moves within the drone's field of view.
+          The communication over WiFi faces some limitations, as the receiving and sending commands to the drone incurs significant latency. The testing scenario also faced uniform lighting,
+          testing in different lighting conditions was not done and would be a good next step to improve the robustness of the system. Currently, the system is limited to tracking a single target at a time,
+          if sight is lost, the drone will hover in place until the target is reacquired. Future improvements could include implementing a search pattern to reacquire lost targets, as well as integrating 
+          more advanced computer vision techniques for multi-target tracking and occlusion handling.
+        `,
       },
       {
         type: "gallery",
