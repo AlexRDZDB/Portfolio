@@ -218,6 +218,17 @@ const BLOCKS = {
       </div>
     </section>`,
 
+  carousel: (b) => `
+    <section class="block">
+      ${b.heading ? `<h2>${esc(b.heading)}</h2>` : ""}
+      ${b.body ? paragraphs(b.body) : ""}
+      <div class="carousel" tabindex="0">
+        ${b.images
+          .map((img) => `<figure>${Media(img.src, img.caption)}<figcaption>${esc(img.caption)}</figcaption></figure>`)
+          .join("")}
+      </div>
+    </section>`,
+
   video: (b) => `
     <figure class="block">
       ${

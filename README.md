@@ -79,6 +79,7 @@ A project's `sections` is a list of blocks, shown top to bottom:
 | `list`    | Bullet list        | `heading`, `items: [...]`                |
 | `image`   | One image          | `src`, `caption`                         |
 | `gallery` | Grid of images     | `heading`, `images: [{ src, caption }]`  |
+| `carousel` | Sideways-scrolling strip of images/GIFs | `heading`, `body` (optional), `images: [{ src, caption }]` |
 | `video`   | YouTube embed      | `youtube` (the ID after `v=` in the URL), `caption` |
 | `specs`   | Two-column table   | `heading`, `rows: [["Label", "Value"]]`  |
 | `code`    | Code snippet       | `heading`, `code` (between backticks)    |
