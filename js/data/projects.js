@@ -18,6 +18,9 @@
      imageFit  Optional. "contain" shows the whole cover image on the project
                page instead of cropping it (good for tall photos).
      featured  true = also show on the home page.
+     hidden    Optional. true = leave it off the site (projects page, home
+               page, prev/next links). Its page still opens from a direct
+               link, so you can preview it. Set back to false to show it.
      links     Buttons at the top of the project page (GitHub, video, paper...).
      sections  The body of the project page, built from "blocks".
 
@@ -41,6 +44,130 @@
    ===================================================================== */
 
 const PROJECTS = [
+  {
+    id: "bumpybot-wrench-estimation",
+    title: "BumpyBot: Sensing Contact Forces Through the Drivetrain",
+    summary: `
+      An in situ calibration that lets BumpyBot, a soft-bodied robotic
+      wheelchair for children's hospitals, estimate where it is touched and
+      how hard from its drivetrain torques alone, with no added force sensors.
+    `,
+    date: "Fall 2025",
+    role: "Undergraduate Research Intern, Human Centered Robotics Laboratory (UT Austin)",
+    tags: ["Calibration", "Contact Estimation", "Robust Regression", "Omnidirectional Robots", "Data Analysis"],
+    image: "assets/images/projects/bumpybot/bumpybot.png",
+    featured: true,
+    links: [],
+    sections: [
+      {
+        type: "text",
+        heading: "Overview",
+        body: `
+          BumpyBot is a robotic wheelchair developed at UT Austin's Human
+          Centered Robotics Laboratory for children's hospitals. Robots that
+          move around people in cluttered spaces will inevitably bump into
+          things, so BumpyBot has a soft body exterior. To react safely, it
+          also needs to know where it was touched, how hard, and in which
+          direction.
+
+          The robot can estimate this from its drivetrain torques, with no
+          extra sensors. But existing methods for omnidirectional bases assume
+          the torque readings are ideal, which they never are on real
+          hardware. We introduced an in situ calibration procedure: push the
+          robot at known points with quasi-static test contacts, then use
+          robust regression to fit a structured correction map for the torque
+          readings. This calibrates the whole robot as it is, without
+          calibrating each sensor individually or taking the robot apart.
+        `,
+      },
+      {
+        type: "specs",
+        heading: "At a glance",
+        rows: [
+          ["Robot", "BumpyBot — soft-bodied robotic wheelchair on a three-wheeled omni base"],
+          ["Lab", "Human Centered Robotics Laboratory, UT Austin"],
+          ["Duration", "August 2025 – December 2025"],
+          ["Estimates", "Contact location, force magnitude, and force direction"],
+          ["Method", "In situ torque correction map fit with robust regression"],
+          ["Outcome", "Co-authored research paper (in preparation)"],
+        ],
+      },
+      {
+        type: "list",
+        heading: "What I did",
+        items: [
+          "Designed the calibration setup used to apply quasi-static test contacts to the robot's soft exterior.",
+          "Designed the test protocol: 12 contact locations around the robot's perimeter at varying force levels.",
+          "Ran the analysis and inference on the collected data to evaluate how accurately the calibrated robot estimates contact location, force magnitude, and direction.",
+          "Co-authored the resulting paper, \"In Situ Calibration and Uncertainty Quantification for Proprioceptive Wrench Estimation on Mobile Robots.\"",
+        ],
+      },
+      {
+        type: "specs",
+        heading: "Results",
+        rows: [
+          ["Contact localization error", "16 cm on average"],
+          ["Force magnitude error", "20% on average (16% at high signal-to-noise ratio)"],
+          ["Force direction error", "10° on average"],
+          ["Test coverage", "12 perimeter locations, varying force levels"],
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "hcrl-quadruped-rl",
+    title: "Learning-Based Quadruped Locomotion",
+    summary: `
+      Research at UT Austin's Human Centered Robotics Laboratory: training
+      reinforcement learning walking policies for quadrupeds in Isaac Lab
+      that stay stable under external disturbances.
+    `,
+    date: "Fall 2025",
+    role: "Undergraduate Research Intern, Human Centered Robotics Laboratory (UT Austin)",
+    tags: ["Reinforcement Learning", "Isaac Lab", "Isaac Sim", "PyTorch", "Legged Locomotion"],
+    image: "",
+    featured: false,
+    hidden: true,
+    links: [],
+    sections: [
+      {
+        type: "text",
+        heading: "Overview",
+        body: `
+          Legged robots can go where wheeled robots can't, but keeping them
+          stable on uneven ground or when they get pushed is hard to solve
+          with hand-tuned controllers. Learning-based control trains a policy
+          in simulation instead, letting the robot discover walking behavior
+          that adapts to disturbances.
+
+          As an undergraduate research intern at the Human Centered Robotics
+          Laboratory at The University of Texas at Austin, I worked on
+          learning-based control for embodied robotic systems, focusing on
+          stability and adaptive behavior in dynamic environments.
+        `,
+      },
+      {
+        type: "specs",
+        heading: "At a glance",
+        rows: [
+          ["Lab", "Human Centered Robotics Laboratory, UT Austin"],
+          ["Duration", "August 2025 – December 2025"],
+          ["Simulation", "NVIDIA Isaac Sim, Isaac Lab"],
+          ["Learning", "Reinforcement learning with PyTorch"],
+        ],
+      },
+      {
+        type: "list",
+        heading: "What I did",
+        items: [
+          "Designed and implemented reinforcement learning policies in Isaac Lab and PyTorch, achieving quadruped walking gaits that stay stable under external disturbances.",
+          "Built and validated high-fidelity Isaac Sim environments for locomotion and navigation benchmarking.",
+        ],
+      },
+    ],
+  },
+
   {
     id: "puzzlebot-software",
     title: "Autonomous Forklift Warehouse Operations",

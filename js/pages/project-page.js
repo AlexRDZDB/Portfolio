@@ -4,8 +4,10 @@
 renderLayout();
 
 const id = new URLSearchParams(location.search).get("id");
-const index = PROJECTS.findIndex((p) => p.id === id);
-const project = PROJECTS[index];
+// Hidden projects still open from a direct link, but are left out of prev/next.
+const project = PROJECTS.find((p) => p.id === id);
+const shown = VisibleProjects();
+const index = shown.indexOf(project);
 
 if (!project) {
   render("project", `
@@ -16,8 +18,8 @@ if (!project) {
 } else {
   document.title = `${project.title} | ${SITE.name}`;
 
-  const prev = PROJECTS[index - 1];
-  const next = PROJECTS[index + 1];
+  const prev = index > 0 ? shown[index - 1] : null;
+  const next = index >= 0 ? shown[index + 1] : null;
 
   render("project", `
     <a class="back-link" href="projects.html">← All projects</a>

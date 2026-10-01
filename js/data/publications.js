@@ -20,9 +20,20 @@
 
 // How your name is written in author lists. It is shown in bold wherever
 // it appears. Add every spelling you've published under.
-const MY_AUTHOR_NAMES = ["A. Rodriguez del Bosque", "Alejandro Rodriguez del Bosque", "Alejandro Rodriguez-del-Bosque"];
+const MY_AUTHOR_NAMES = ["A. Rodriguez del Bosque", "Alejandro Rodriguez del Bosque", "Alejandro Rodriguez-del-Bosque", "Alejandro Rodriguez"];
 
 const PUBLICATIONS = [
+  {
+    title: "In Situ Calibration and Uncertainty Quantification for Proprioceptive Wrench Estimation on Mobile Robots",
+    authors: "Jacob Tomczeszyn, Francisco Montano, Dylan Zu, Kerwin Zhang, Alejandro Rodriguez, Junfeng Jiao, Luis Sentis",
+    venue: "Human Centered Robotics Laboratory, The University of Texas at Austin",
+    year: "2026",
+    type: "Manuscript",
+    status: "In preparation",
+    abstract: "",
+    links: [{ label: "Project", url: "project.html?id=bumpybot-wrench-estimation" }],
+  },
+
   {
     title: "A Pipeline for Aligning 3D Gaussian Splatting Scenes with 3D Meshes in Robotics Simulations",
     authors: "Alfonso Solis-Diaz, Alejandro Rodriguez-del-Bosque, Arturo E. Ceron-Lopez",
@@ -45,29 +56,6 @@ const PUBLICATIONS = [
     `,
     links: [
       { label: "PDF", url: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11272964" },
-      { label: "arXiv", url: "https://arxiv.org/abs/0000.00000" },
     ],
-  },
-
-  {
-    title: "Title of Your Journal Article",
-    authors: "B. Coauthor, A. Rodriguez del Bosque, C. Advisor",
-    venue: "IEEE Robotics and Automation Letters (RA-L)",
-    year: "2025",
-    type: "Journal",
-    status: "",
-    abstract: "",
-    links: [{ label: "DOI", url: "https://doi.org/10.0000/example" }],
-  },
-
-  {
-    title: "Title of Your Thesis or Capstone Report",
-    authors: "Alejandro Rodriguez del Bosque",
-    venue: "Your University",
-    year: "2025",
-    type: "Thesis",
-    status: "",
-    abstract: "",
-    links: [],
   },
 ];

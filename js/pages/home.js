@@ -12,7 +12,7 @@ render("hero", `
   </div>
 `);
 
-render("featured-projects", ProjectGrid(PROJECTS.filter((p) => p.featured)));
+render("featured-projects", ProjectGrid(VisibleProjects().filter((p) => p.featured)));
 
 render("about-text", SITE.about.map((p) => `<p>${esc(p)}</p>`).join(""));
 

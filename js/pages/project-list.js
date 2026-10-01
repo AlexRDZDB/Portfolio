@@ -2,4 +2,4 @@
 
 renderLayout();
 
-render("all-projects", ProjectGrid(PROJECTS));
+render("all-projects", ProjectGrid(VisibleProjects()));

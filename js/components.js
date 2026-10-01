@@ -133,6 +133,11 @@ function ProjectCard(project) {
     </a>`;
 }
 
+// Every project except the ones marked hidden: true.
+function VisibleProjects() {
+  return PROJECTS.filter((p) => !p.hidden);
+}
+
 function ProjectGrid(projects) {
   if (!projects.length) return `<p class="muted">No projects yet.</p>`;
   return `<div class="grid">${projects.map(ProjectCard).join("")}</div>`;
@@ -142,11 +147,13 @@ function ProjectGrid(projects) {
 
 // Author list with your name (from MY_AUTHOR_NAMES) in bold.
 function Authors(authors) {
-  let html = esc(authors);
-  (typeof MY_AUTHOR_NAMES !== "undefined" ? MY_AUTHOR_NAMES : []).forEach((name) => {
-    html = html.split(esc(name)).join(`<strong>${esc(name)}</strong>`);
-  });
-  return html;
+  const html = esc(authors);
+  const names = (typeof MY_AUTHOR_NAMES !== "undefined" ? MY_AUTHOR_NAMES : [])
+    .map(esc)
+    .sort((a, b) => b.length - a.length) // longest first, so "A B C" wins over "A B"
+    .map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (!names.length) return html;
+  return html.replace(new RegExp(names.join("|"), "g"), (m) => `<strong>${m}</strong>`);
 }
 
 // One entry on the Publications page.
@@ -175,6 +182,23 @@ function Publication(pub) {
 function PublicationList(publications) {
   if (!publications.length) return `<p class="muted">No publications yet.</p>`;
   return publications.map(Publication).join("");
+}
+
+// One entry on the Experience page.
+function ExperienceItem(job) {
+  const links = (job.links || []).map((l) => Button(l.label, l.url, "secondary btn-small")).join("");
+
+  return `
+    <article class="experience">
+      <p class="exp-dates">${esc(job.dates)}</p>
+      <div class="exp-body">
+        <h3>${esc(job.role)}</h3>
+        <p class="exp-org">${esc(job.org)}${job.place ? ` · ${esc(job.place)}` : ""}</p>
+        <ul class="bullets">${job.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+        ${job.tags && job.tags.length ? Tags(job.tags) : ""}
+        ${links ? `<div class="pub-links">${links}</div>` : ""}
+      </div>
+    </article>`;
 }
 
 function SkillGroup(skill) {

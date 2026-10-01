@@ -26,6 +26,7 @@ const SITE = {
   nav: [
     { label: "Home",     page: "index.html" },
     { label: "Projects", page: "projects.html" },
+    { label: "Experience", page: "experience.html" },
     { label: "Publications", page: "publications.html" },
     { label: "About",   page: "index.html#about" },
     { label: "Contact",  page: "index.html#contact" },
