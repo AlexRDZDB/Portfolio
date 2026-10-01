@@ -106,9 +106,9 @@ function Tags(tags) {
 }
 
 // An image, or a striped placeholder box if no image path is given yet.
-function Media(src, alt) {
+function Media(src, alt, extraClass = "") {
   if (!src) return `<div class="media placeholder"><span>Add image</span></div>`;
-  return `<img class="media" src="${src}" alt="${esc(alt)}" loading="lazy">`;
+  return `<img class="media ${extraClass}" src="${src}" alt="${esc(alt)}" loading="lazy">`;
 }
 
 function Button(label, url, style = "primary") {
@@ -123,7 +123,7 @@ function Button(label, url, style = "primary") {
 function ProjectCard(project) {
   return `
     <a class="card" href="project.html?id=${project.id}">
-      ${Media(project.image, project.title)}
+      ${Media(project.cardImage || project.image, project.title)}
       <div class="card-body">
         <p class="eyebrow">${esc(project.date)}</p>
         <h3>${esc(project.title)}</h3>

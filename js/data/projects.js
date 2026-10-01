@@ -13,6 +13,10 @@
      role      Your role, e.g. "Team lead — controls & firmware".
      tags      Short keywords shown as chips.
      image     Cover image path (leave "" to use the placeholder).
+     cardImage Optional. A different image for the project card (projects
+               list and home page). If left out, the card uses "image".
+     imageFit  Optional. "contain" shows the whole cover image on the project
+               page instead of cropping it (good for tall photos).
      featured  true = also show on the home page.
      links     Buttons at the top of the project page (GitHub, video, paper...).
      sections  The body of the project page, built from "blocks".
@@ -148,6 +152,89 @@ const PROJECTS = [
           avoided. And with eleven teams sharing one test arena, we learned to
           make the most of short hardware sessions by testing everything we
           could in simulation first.
+        `,
+      },
+    ],
+  },
+
+  {
+    id: "anymal-d",
+    title: "ANYmal D Quadruped for Inspection & Digital Twins",
+    summary: `
+      Research with an ANYbotics ANYmal D legged robot toward inspecting
+      natural areas and turning them into Gaussian Splatting digital twins.
+    `,
+    date: "Fall 2025 - Spring 2026",
+    role: "RASTec Founding Member & Vice-President — documentation, operation, simulation testing",
+    tags: ["ANYmal D", "Legged Robots", "Gaussian Splatting", "Digital Twins", "Gazebo"],
+    image: "assets/images/projects/anymal/ANYmal-D.jpeg",
+    imageFit: "contain",
+    cardImage: "assets/images/projects/anymal/ANYmal-Cover.jpeg",
+    featured: true,
+    links: [
+      { label: "Paper (LARS 2025)", url: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11272964" },
+    ],
+    sections: [
+      {
+        type: "text",
+        heading: "Overview",
+        body: `
+          The ANYmal D is an industrial quadruped robot built to inspect sites
+          that are hard or dangerous for people to reach, such as plants,
+          offshore platforms, and tunnels. Through RASTec, our local IEEE
+          Robotics and Automation Society student branch, which I helped found,
+          I worked with the robot as part of a research effort on autonomous
+          inspection.
+
+          The long-term goal is for the ANYmal to walk through natural areas,
+          where terrain is too rough for wheeled robots, and capture the data
+          needed to build photorealistic digital twins of them using 3D Gaussian
+          Splatting. These digital twins can then be used to monitor an area
+          over time or to test robots in simulation before sending them into
+          the field.
+
+          My work focused on making the platform usable for the team: learning
+          how the system works, writing documentation for future members,
+          getting certified to operate it, and testing inspection procedures in
+          simulation before running them on the real robot.
+        `,
+      },
+      {
+        type: "specs",
+        heading: "At a glance",
+        rows: [
+          ["Platform", "ANYbotics ANYmal D quadruped"],
+          ["Organization", "RASTec (IEEE Robotics and Automation Society student branch)"],
+          ["Certifications", "ANYmal Operator Certification, ANYmal Safety Certification"],
+          ["Simulation", "Gazebo, integrated into the ANYmal software package"],
+        ],
+      },
+      {
+        type: "list",
+        heading: "What I did",
+        items: [
+          "As founding member and vice-president of RASTec, documented the ANYmal D system to give future members a starting point for development.",
+          "Earned the ANYmal Operator Certification and the ANYmal Safety Certification.",
+          "Tested industrial inspection procedures in the Gazebo simulation integrated into the ANYmal software package.",
+          "Co-authored a LARS 2025 paper on aligning 3D Gaussian Splatting scenes with 3D meshes for robotics simulation.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Research: Gaussian Splatting for robotics simulation",
+        body: `
+          3D Gaussian Splatting (3DGS) produces photorealistic reconstructions of
+          real environments, but those reconstructions are noisy and are not
+          aligned with the meshes a physics simulator needs. Our paper presents
+          a six-stage pipeline that automatically aligns and prunes a 3DGS scene
+          against a reference 3D mesh. This combines photorealistic rendering
+          with accurate geometry. It is a building block for the project's
+          goal: digital twins of real natural areas, captured by the ANYmal,
+          that are realistic enough to test robots in simulation.
+
+          We validated the pipeline on three reconstructions, measuring
+          structural quality, segmentation accuracy, surface reconstruction
+          fidelity, and alignment precision.
         `,
       },
     ],

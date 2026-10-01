@@ -30,7 +30,7 @@ if (!project) {
       <div class="actions">${(project.links || []).map((l) => Button(l.label, l.url, "secondary")).join("")}</div>
     </header>
 
-    ${Media(project.image, project.title)}
+    ${Media(project.image, project.title, project.imageFit === "contain" ? "contain" : "")}
 
     ${(project.sections || []).map(Block).join("")}
 
