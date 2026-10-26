@@ -103,14 +103,12 @@ const PROJECTS = [
         ],
       },
       {
-        type: "specs",
+        type: "text",
         heading: "Results",
-        rows: [
-          ["Contact localization error", "16 cm on average"],
-          ["Force magnitude error", "20% on average (16% at high signal-to-noise ratio)"],
-          ["Force direction error", "10° on average"],
-          ["Test coverage", "12 perimeter locations, varying force levels"],
-        ],
+        body: `
+          The paper is still in preparation, so the results are not publicly
+          available yet. This section will be updated once it is published.
+        `,
       },
     ],
   },
@@ -176,8 +174,8 @@ const PROJECTS = [
       warehouse, picks up pallets, and delivers them to the correct trailer bay.
     `,
     date: "Spring 2026",
-    role: "Team Member — autonomy, integration, mechanical design",
-    tags: ["ROS 2", "Python", "FPGA", "Computer Vision", "LiDAR", "Fusion360"],
+    role: "Developer — system architecture, autonomy, perception, mechanical design",
+    tags: ["ROS 2", "Python", "FPGA", "Computer Vision", "LiDAR", "Fusion 360"],
     image: "assets/images/projects/puzzlebot/puzzlebot.jpeg",
     featured: true,
     links: [
@@ -213,18 +211,19 @@ const PROJECTS = [
           ["Actuators", "2x brushed DC drive motors, geared DC motor for the forklift"],
           ["Sensors", "Camera, 2D LiDAR, IMU, wheel encoders, forklift encoder"],
           ["Software", "ROS 2 Humble, OpenCV, YOLO, Gazebo, Docker"],
-          ["Navigation", "Custom A* planner, Pure Pursuit, Bug 2 obstacle avoidance"],
+          ["Navigation", "LiDAR-based SLAM, custom weighted A* planner, Pure Pursuit, Bug 2 obstacle avoidance"],
         ],
       },
       {
         type: "list",
         heading: "What I did",
         items: [
-          "Contributed to the ROS 2 node architecture.",
+          "Designed the system architecture and ROS 2 communication framework, coordinating nodes and topics across the NVIDIA Jetson Nano, LiDAR, FPGA, encoders, and perception/control modules.",
+          "Developed closed-loop PID wheel velocity control and weighted A* obstacle-avoidance planning, integrating LiDAR-based SLAM for autonomous navigation while keeping a safe distance from obstacles.",
           "Implemented Bug 2 obstacle avoidance, switching between goal-seeking and wall-following when the LiDAR detects an obstacle.",
-          "Wrote the ROS2 control logic for closed-loop wheel velocity control.",
-          "Aided in implementation of state machine for autonomous warehouse operations.",
-          "Designed and manufactured multiple iterations of the forklift attachment in Fusion360.",
+          "Developed the perception and task-execution pipeline, using YOLO for company-logo detection and QR-code recognition to identify pallets and deliver them to the correct trailer bay.",
+          "Helped implement the mission state machine that coordinates the full warehouse operation.",
+          "Designed and manufactured multiple iterations of the forklift attachment in Fusion 360.",
           "Architected the control pipeline for controlling the forklift attachment using an FPGA."
         ],
       },
@@ -291,9 +290,9 @@ const PROJECTS = [
       Research with an ANYbotics ANYmal D legged robot toward inspecting
       natural areas and turning them into Gaussian Splatting digital twins.
     `,
-    date: "Fall 2025 - Spring 2026",
-    role: "RASTec Founding Member & Vice-President — documentation, operation, simulation testing",
-    tags: ["ANYmal D", "Legged Robots", "Gaussian Splatting", "Digital Twins", "Gazebo"],
+    date: "Fall 2025 – Spring 2026",
+    role: "RASTec Co-Founder & Vice President — research initiative lead, documentation, operation, simulation testing",
+    tags: ["ANYmal D", "Legged Robots", "Gaussian Splatting", "Digital Twins", "Gazebo", "Isaac Sim", "Sim-to-Real"],
     image: "assets/images/projects/anymal/ANYmal-D.jpeg",
     imageFit: "contain",
     cardImage: "assets/images/projects/anymal/ANYmal-Cover.jpeg",
@@ -309,9 +308,8 @@ const PROJECTS = [
           The ANYmal D is an industrial quadruped robot built to inspect sites
           that are hard or dangerous for people to reach, such as plants,
           offshore platforms, and tunnels. Through RASTec, our local IEEE
-          Robotics and Automation Society student branch, which I helped found,
-          I worked with the robot as part of a research effort on autonomous
-          inspection.
+          Robotics and Automation Society student branch, which I co-founded,
+          I led the research initiative built around the robot.
 
           The long-term goal is for the ANYmal to walk through natural areas,
           where terrain is too rough for wheeled robots, and capture the data
@@ -320,10 +318,14 @@ const PROJECTS = [
           over time or to test robots in simulation before sending them into
           the field.
 
-          My work focused on making the platform usable for the team: learning
-          how the system works, writing documentation for future members,
-          getting certified to operate it, and testing inspection procedures in
-          simulation before running them on the real robot.
+          As vice president, I directed the initiative's work on learning-based
+          control, robust perception, and dynamic-terrain navigation, and
+          coordinated projects across ROS 2, Gazebo, and Isaac Sim with
+          simulation-to-real validation workflows. Hands-on, I made the platform
+          usable for the team: learning how the system works, writing
+          documentation for future members, getting certified to operate it,
+          and testing inspection procedures in simulation before running them
+          on the real robot.
         `,
       },
       {
@@ -332,15 +334,19 @@ const PROJECTS = [
         rows: [
           ["Platform", "ANYbotics ANYmal D quadruped"],
           ["Organization", "RASTec (IEEE Robotics and Automation Society student branch)"],
+          ["My role", "Co-Founder & Vice President, research initiative lead"],
+          ["Research areas", "Learning-based control, robust perception, dynamic-terrain navigation"],
           ["Certifications", "ANYmal Operator Certification, ANYmal Safety Certification"],
-          ["Simulation", "Gazebo, integrated into the ANYmal software package"],
+          ["Simulation", "Gazebo (integrated into the ANYmal software package), Isaac Sim"],
         ],
       },
       {
         type: "list",
         heading: "What I did",
         items: [
-          "As founding member and vice-president of RASTec, documented the ANYmal D system to give future members a starting point for development.",
+          "Led RASTec's ANYmal D research initiative as co-founder and vice president, directing work on learning-based control, robust perception, and dynamic-terrain navigation.",
+          "Coordinated multidisciplinary robotics projects integrating ROS 2, Gazebo, and Isaac Sim, developing simulation-to-real validation workflows.",
+          "Documented the ANYmal D system to give future members a starting point for development.",
           "Earned the ANYmal Operator Certification and the ANYmal Safety Certification.",
           "Tested industrial inspection procedures in the Gazebo simulation integrated into the ANYmal software package.",
           "Co-authored a LARS 2025 paper on aligning 3D Gaussian Splatting scenes with 3D meshes for robotics simulation.",
@@ -374,12 +380,15 @@ const PROJECTS = [
       "ROS 2 package that autonomously holds a DJI Tello centered above a moving ArUco target using downward-camera vision and proportional control.",
     date: "Spring 2025",
     role: "Solo project",
-  tags: ["UAV", "ROS2", "OpenCV", "ArUco", "Control Systems", "Computer Vision"],
-    image: "assets/images/projects/drone_project/dji-robomaster-tt-tello-talent.jpg",
+    tags: ["UAV", "ROS 2", "OpenCV", "ArUco", "Control Systems", "Computer Vision"],
+    image: "assets/images/projects/drone_project/drone_out_pov.png",
+    imageFit: "contain",
+    cardImage: "assets/images/projects/drone_project/drone_out_pov_card.jpg",
     featured: false,
-    links: [{ label: "GitHub", url: "https://github.com/AlexRDZDB/DJITello_Surveillance.git" },
-            { label: "Drone POV Demo video", url: "https://drive.google.com/file/d/1wkxGqrdo_Bz1pJ7UXaKFAKteh245SyYB/view?usp=drive_link" },
-            { label: "Outsider POV Demo video", url: "https://drive.google.com/file/d/1UTa6qH5PsfZpUCCcUiXmUgZwu6r9yftn/view?usp=drive_link" }
+    links: [
+      { label: "GitHub", url: "https://github.com/AlexRDZDB/DJITello_Surveillance.git" },
+      { label: "Drone POV Demo video", url: "https://drive.google.com/file/d/1wkxGqrdo_Bz1pJ7UXaKFAKteh245SyYB/view?usp=drive_link" },
+      { label: "Outsider POV Demo video", url: "https://drive.google.com/file/d/1UTa6qH5PsfZpUCCcUiXmUgZwu6r9yftn/view?usp=drive_link" },
     ],
     sections: [
       {
@@ -387,7 +396,7 @@ const PROJECTS = [
         heading: "Overview",
         body: `
           Unmanned Aerial Vehicles (UAVs) have a wide range of useful applications. Inspired by avoiding poaching
-          of endangered species that happen in the African Savannah, I developed a ROS2 package that can command
+          of endangered species that happen in the African Savannah, I developed a ROS 2 package that can command
           a DJI Tello drone and use Computer Vision to hover over an object, using Proportional controllers to maintain
           the object in the center of a camera frame, as well as to respect a vertical distance from the object. 
         `,
@@ -409,7 +418,7 @@ const PROJECTS = [
           physical side length is known, the distance is computed from its apparent side length in pixels and an empirically 
           calibrated focal length.
 
-          Once calculated, the controller node receives the offset values via ROS2 topics, and uses them to compute the necessary velocity commands to send to the drone. 
+          Once calculated, the controller node receives the offset values via ROS 2 topics, and uses them to compute the necessary velocity commands to send to the drone. 
           The controller uses a simple Proportional control law to adjust the drone's position in real-time, ensuring that the target remains centered in the camera frame 
           and at a desired height.
         `,
@@ -459,36 +468,9 @@ const PROJECTS = [
         `,
       },
       {
-        type: "gallery",
-        images: [
-          { src: "", caption: "DJI Tello Drone" },
-          { src: "", caption: "Drone POV" },
-        ],
-      },
-    ],
-  },
-
-  {
-    id: "balancing-robot",
-    title: "Self-Balancing Robot",
-    summary:
-      "A two-wheeled inverted pendulum stabilized with a cascaded PID controller and a complementary filter.",
-    date: "Summer 2024",
-    role: "Controls & firmware",
-    tags: ["Controls", "Embedded C", "IMU"],
-    image: "",
-    featured: true,
-    links: [],
-    sections: [
-      {
-        type: "text",
-        heading: "Overview",
-        body: "Describe the controller design, tuning process, and results.",
-      },
-      {
-        type: "video",
-        youtube: "",
-        caption: "Paste a YouTube video ID above to embed a demo.",
+        type: "image",
+        src: "assets/images/projects/drone_project/drone_in_pov.png",
+        caption: "Drone POV: grayscale downward camera with the detected ArUco marker (id 56) outlined",
       },
     ],
   },

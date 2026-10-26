@@ -14,7 +14,7 @@ render("hero", `
 
 render("featured-projects", ProjectGrid(VisibleProjects().filter((p) => p.featured)));
 
-render("about-text", SITE.about.map((p) => `<p>${esc(p)}</p>`).join(""));
+render("about-text", paragraphs(SITE.about));
 
 render("skills", SITE.skills.map(SkillGroup).join(""));
 

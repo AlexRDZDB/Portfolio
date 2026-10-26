@@ -31,7 +31,7 @@ Portfolio/
 │       └── publications.js   Fills in publications.html
 └── assets/
     ├── images/projects/  Project photos (e.g. images/projects/rover/cover.jpg)
-    └── docs/             resume.pdf goes here
+    └── docs/             Resume PDF and project reports
 ```
 
 **How it fits together:** the `data` files hold your content, `components.js` turns content into HTML, and each page script decides which components go where on its page. Most of the time you only edit the `data` files.
@@ -88,7 +88,7 @@ A project's `sections` is a list of blocks, shown top to bottom:
 Edit the variables at the top of `css/styles.css` (`--accent`, `--bg`, etc.).
 
 ### Add your resume
-Save it as `assets/docs/resume.pdf`, or change the `resume` path in `site.js` and the Resume item in `nav`.
+Save it as `assets/docs/Alejandro-Rodriguez-del-Bosque-Resume.pdf`, or change the `resume` path in `site.js` and the Resume item in `nav`.
 
 ## Adding your own component
 

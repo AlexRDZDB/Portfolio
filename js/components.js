@@ -194,11 +194,16 @@ function ExperienceItem(job) {
       <div class="exp-body">
         <h3>${esc(job.role)}</h3>
         <p class="exp-org">${esc(job.org)}${job.place ? ` · ${esc(job.place)}` : ""}</p>
-        <ul class="bullets">${job.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+        ${job.highlights && job.highlights.length ? `<ul class="bullets">${job.highlights.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
         ${job.tags && job.tags.length ? Tags(job.tags) : ""}
         ${links ? `<div class="pub-links">${links}</div>` : ""}
       </div>
     </article>`;
+}
+
+// One degree on the Experience page. Same layout as an experience entry.
+function EducationItem(edu) {
+  return ExperienceItem({ ...edu, role: edu.degree, org: edu.school });
 }
 
 function SkillGroup(skill) {

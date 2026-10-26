@@ -20,7 +20,7 @@
 
 // How your name is written in author lists. It is shown in bold wherever
 // it appears. Add every spelling you've published under.
-const MY_AUTHOR_NAMES = ["A. Rodriguez del Bosque", "Alejandro Rodriguez del Bosque", "Alejandro Rodriguez-del-Bosque", "Alejandro Rodriguez"];
+const MY_AUTHOR_NAMES = ["A. Rodriguez del Bosque", "Alejandro Rodriguez del Bosque", "Alejandro Rodriguez-del-Bosque", "Alejandro Rodriguez", "Alejandro Rodríguez del Bosque", "Alejandro Rodríguez"];
 
 const PUBLICATIONS = [
   {

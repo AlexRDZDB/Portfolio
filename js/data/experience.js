@@ -38,10 +38,10 @@ const EXPERIENCE = [
     highlights: [
       "Researched learning-based control strategies for embodied robotic systems, focusing on stability and adaptive behavior in dynamic environments.",
       "Designed and implemented reinforcement learning policies in Isaac Lab and PyTorch, achieving quadruped walking gaits that stay stable under external disturbances.",
-      "Built and validated high-fidelity Isaac Sim environments for locomotion and navigation benchmarking.",
-      "Designed the calibration setup, tests, and data analysis for estimating contact forces on BumpyBot, a soft-bodied robotic wheelchair, from its drivetrain torques, reaching 10° force-direction error and 16 cm contact localization error. This work produced a co-authored research paper.",
+      "Built and validated high-fidelity Isaac Sim environments for locomotion and navigation benchmarking, and analyzed multi-sensor data to validate a drivetrain-based contact measurement framework.",
+      "Designed the calibration setup, tests, and data analysis for estimating contact forces on BumpyBot, a soft-bodied robotic wheelchair, from its drivetrain torques. This work produced a co-authored research paper, currently in preparation.",
     ],
-    tags: ["Reinforcement Learning", "Isaac Lab", "Isaac Sim", "PyTorch", "Calibration", "Uncertainty Quantification"],
+    tags: ["Reinforcement Learning", "Isaac Lab", "Isaac Sim", "PyTorch", "Calibration", "Uncertainty Quantification", "Multi-Sensor Data Analysis"],
     links: [{ label: "BumpyBot project", url: "project.html?id=bumpybot-wrench-estimation" }],
   },
 
@@ -53,7 +53,7 @@ const EXPERIENCE = [
     highlights: [
       "Co-founded the branch and led its ANYmal D research initiative, directing work on learning-based control, robust perception, and dynamic-terrain navigation.",
       "Coordinated multidisciplinary robotics projects using ROS 2, Gazebo, and Isaac Sim, building simulation-to-real validation workflows.",
-      "Designed and delivered reinforcement learning and research-training workshops for the 2025 Latin American Robotics Symposium (LARS).",
+      "Designed and delivered reinforcement learning workshops and robotics research training for the 2025 Latin American Robotics Symposium (LARS), covering RL implementation, experimental design, reproducibility, and control-system validation.",
     ],
     tags: ["Leadership", "ANYmal D", "ROS 2", "Isaac Sim"],
     links: [{ label: "ANYmal D project", url: "project.html?id=anymal-d" }],
